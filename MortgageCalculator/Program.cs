@@ -63,7 +63,11 @@ public class Program
             }
             Console.WriteLine($"Response to mortgage application: \n {mortgage.ToString()}");
             Console.WriteLine($"Response to mortgage application: \n {mortgage.ToPipeDelimitedString()}");
-            shoulContinue = Validation.GetValidBool("Do you want to do another calculator: [y/n]");
+            if (mortgage.ApprovalStatus == Enumerations.MortgageApproval.Deny)
+            {
+                Console.WriteLine("Consider increasing the downpayment or earn more income!");
+            }
+            shoulContinue = Validation.GetValidBool("Do you want to do another mortgage calculation?: [y/n]");
         } while (shoulContinue);
     }
 
